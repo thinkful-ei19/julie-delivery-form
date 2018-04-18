@@ -1,6 +1,5 @@
 import React from 'react';
 import {reduxForm, Field, SubmissionError} from 'redux-form';
-//focus
 import {required, nonEmpty, fiveCharacters, nonNumber} from '../validator';
 import './complaint-form.css';
 
@@ -40,16 +39,25 @@ class ComplaintForm extends React.Component {
             });
     };
     render() {
-        // if(this.props.submitSucceeded) {
-        //     return <div> Thank you for your input </div>;
-        // }
-        // console.log(this.props)
+ 
+        if(this.props.submitSucceeded) {
+            return <div className="success message">Success</div>;
+        }
+       
+        if(this.props.submitFailed) {
+            return <div className="error message">Error</div> 
+        }
         return (
+            
+                 
             <form 
-              onSubmit={this.props.handleSubmit(values=> {
+              onSubmit={this.props.handleSubmit(values => {
                   console.log(values);
-                this.onSubmit(values) }
+
+                return this.onSubmit(values) }
             )}>
+            
+         
                 <label htmlFor="trackingNumber">Tracking Number</label> <br/>
                 <Field 
                     component="input" 
@@ -72,6 +80,7 @@ class ComplaintForm extends React.Component {
                 </Field> <br/>
                 <button type="submit">Submit</button>
             </form>
+        
         )
     }
 }
