@@ -39,7 +39,6 @@ class ComplaintForm extends React.Component {
             });
     };
     render() {
- 
         if(this.props.submitSucceeded) {
             return <div className="success message">Success</div>;
         }
@@ -48,16 +47,13 @@ class ComplaintForm extends React.Component {
             return <div className="error message">Error</div> 
         }
         return (
-            
-                 
+                
             <form 
               onSubmit={this.props.handleSubmit(values => {
                   console.log(values);
 
                 return this.onSubmit(values) }
             )}>
-            
-         
                 <label htmlFor="trackingNumber">Tracking Number</label> <br/>
                 <Field 
                     component="input" 
